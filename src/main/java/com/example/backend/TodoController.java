@@ -11,16 +11,16 @@ public class TodoController {
     public Iterable <Todo>list(){
         return  service.list();
     }
-    @GetMapping(value="api/todo")
+    @PostMapping(value="api/todo")
     public  Todo save(@RequestBody Todo todo){
         return service.save(todo);
     }
-    @GetMapping(value="api/todo")
+    @PutMapping(value="api/todo")
     public  Todo update(@RequestBody Todo todo){
         if (todo.getId() !=null) {
             return service.save(todo);
         }
-        throw new RuntimeException("Ne existe id para actualizar");
+        throw new RuntimeException("No existe id para actualizar");
     }
     @DeleteMapping(value="api/{id}/todo")
     public void delete(@PathVariable Long id){
